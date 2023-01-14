@@ -1,0 +1,27 @@
+{
+  "name": "back-end",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@gitlab.com/famnit-up/hci-mobile.git"
+  },
+  "author": "Q-AU",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://gitlab.com/famnit-up/hci-mobile/issues"
+  },
+  "homepage": "https://gitlab.com/famnit-up/hci-mobile#readme",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongodb": "^4.13.0",
+    "mongoose": "^6.8.1",
+    "path": "^0.12.7"
+  }
+}
