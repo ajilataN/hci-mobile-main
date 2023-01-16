@@ -5,13 +5,9 @@ import loggia from "./public/loggia.png";
 import ladyDi from "./public/ladyDi.jpg";
 import beaBru from "./public/BeaBru.png";
 
-class NoviceView extends Component {
+class mentoringCompaniesView extends Component {
   QSetViewInParent = (obj) => {
     this.props.QIDFromChild(obj);
-  };
-
-  submitMore = async () => {
-    const toSubmit = {};
   };
 
   render() {
@@ -20,23 +16,6 @@ class NoviceView extends Component {
         className="row row-cols-1 row-cols-md-3 g-4"
         style={{ margin: "10px", marginTop: "40px" }}
       >
-        <div style={{ width: "100%" }}>
-          <div style={{ float: "left" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
-            >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
-          </div>
-        </div>
         <div style={{ display: "flex", width: "100%", height: "5%" }}>
           <input
             type="text"
@@ -63,7 +42,7 @@ class NoviceView extends Component {
           <div style={{ textAlign: "center" }}>
             <span>
               <UniversalButtonView onClick={this.submitMore} title="More" />{" "}
-              <UniversalButtonView title="Collaborate" />
+              <UniversalButtonView title="Apply" />
             </span>
           </div>
         </div>
@@ -85,7 +64,7 @@ class NoviceView extends Component {
           <div style={{ textAlign: "center" }}>
             <span>
               <UniversalButtonView title="More" />{" "}
-              <UniversalButtonView title="Collaborate" />
+              <UniversalButtonView title="Apply" />
             </span>
           </div>
         </div>
@@ -107,7 +86,7 @@ class NoviceView extends Component {
           <div style={{ textAlign: "center" }}>
             <span>
               <UniversalButtonView title="More" />{" "}
-              <UniversalButtonView title="Collaborate" />
+              <UniversalButtonView title="Apply" />
             </span>
           </div>
         </div>
@@ -129,7 +108,7 @@ class NoviceView extends Component {
           <div style={{ textAlign: "center" }}>
             <span>
               <UniversalButtonView title="More" />{" "}
-              <UniversalButtonView title="Collaborate" />
+              <UniversalButtonView title="Apply" />
             </span>
           </div>
         </div>
@@ -138,4 +117,4 @@ class NoviceView extends Component {
   }
 }
 
-export default NoviceView;
+export default mentoringCompaniesView;
