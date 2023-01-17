@@ -2,6 +2,16 @@ import { Component } from "react";
 import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 
 class RatingsView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novica: [],
+    };
+  }
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
+  };
   render() {
     return (
       <div
@@ -10,24 +20,29 @@ class RatingsView extends Component {
           margin: "10px",
           marginTop: "40px",
           marginLeft: "0px",
-          width: "100%"
+          width: "100%",
         }}
       >
         <div style={{ width: "100%" }}>
           <div style={{ float: "left" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
+            <button
+              onClick={() => this.QSetViewInParent({ page: "feed" })}
+              className="btn btn-outline-none"
             >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         <div style={{ textAlign: "center", width: "100%" }}>
@@ -37,7 +52,7 @@ class RatingsView extends Component {
           <div className="input-group">
             <input
               type="text"
-              class="form-control"
+              className="form-control"
               placeholder="Enter location"
               aria-label="Enter location"
               aria-describedby="basic-addon2"
@@ -53,92 +68,39 @@ class RatingsView extends Component {
         <div className="card" style={{ width: "95%", marginLeft: "2.5%" }}>
           <ul className="list-group list-group-flush">
             <li className="list-group-item">
-              <p class="fw-bold">Lady Di</p>
-              <ul class="list-group list-group-horizontal">
-                <li class="list-group-item">
+              <p className="fw-bold">Lady Di</p>
+              <ul className="list-group list-group-horizontal">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                </li>
-              </ul>
-            </li>
-            <li className="list-group-item">
-              <p class="fw-bold">Caffeto</p>
-              <ul class="list-group list-group-horizontal">
-                <li class="list-group-item">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-star-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                </li>
-                <li class="list-group-item">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-star-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                </li>
-                <li class="list-group-item">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-star-fill"
-                    viewBox="0 0 16 16"
-                  >
-                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
-                  </svg>
-                </li>
-                <li class="list-group-item">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="16"
-                    height="16"
-                    fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
@@ -147,63 +109,116 @@ class RatingsView extends Component {
               </ul>
             </li>
             <li className="list-group-item">
-              <p class="fw-bold">Tushan</p>
-              <ul class="list-group list-group-horizontal">
-                <li class="list-group-item">
+              <p className="fw-bold">Caffeto</p>
+              <ul className="list-group list-group-horizontal">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
                   </svg>
                 </li>
-                <li class="list-group-item">
+              </ul>
+            </li>
+            <li className="list-group-item">
+              <p className="fw-bold">Tushan</p>
+              <ul className="list-group list-group-horizontal">
+                <li className="list-group-item">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="16"
                     height="16"
                     fill="currentColor"
-                    class="bi bi-star-fill"
+                    className="bi bi-star-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                  </svg>
+                </li>
+                <li className="list-group-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-star-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                  </svg>
+                </li>
+                <li className="list-group-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-star-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                  </svg>
+                </li>
+                <li className="list-group-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-star-fill"
+                    viewBox="0 0 16 16"
+                  >
+                    <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />
+                  </svg>
+                </li>
+                <li className="list-group-item">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    fill="currentColor"
+                    className="bi bi-star-fill"
                     viewBox="0 0 16 16"
                   >
                     <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z" />

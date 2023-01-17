@@ -4,15 +4,32 @@ import tushan from "./public/tushan.png";
 import loggia from "./public/loggia.png";
 import ladyDi from "./public/ladyDi.jpg";
 import beaBru from "./public/BeaBru.png";
+import axios from "axios";
 
 class NoviceView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novice: [],
+    };
+  }
+
   QSetViewInParent = (obj) => {
     this.props.QIDFromChild(obj);
   };
 
-  submitMore = async () => {
-    const toSubmit = {};
-  };
+  componentDidMount() {
+    axios.get("/novice").then((res) => {
+      this.setState({
+        novice: res.data,
+      });
+      /*.catch(err=>{
+          if(err){
+            console.log("Error: "+err.message)
+          }
+        })*/
+    });
+  }
 
   render() {
     return (
@@ -22,19 +39,24 @@ class NoviceView extends Component {
       >
         <div style={{ width: "100%" }}>
           <div style={{ float: "left" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
+            <button
+              onClick={() => this.QSetViewInParent({ page: "collab" })}
+              className="btn btn-outline-none"
             >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         <div style={{ display: "flex", width: "100%", height: "5%" }}>
@@ -62,8 +84,14 @@ class NoviceView extends Component {
           </div>
           <div style={{ textAlign: "center" }}>
             <span>
-              <UniversalButtonView onClick={this.submitMore} title="More" />{" "}
-              <UniversalButtonView title="Collaborate" />
+              <UniversalButtonView
+                onClick={() => this.QSetViewInParent({ page: "novica" })}
+                title="More"
+              />{" "}
+              <UniversalButtonView
+                onClick={() => this.QSetViewInParent({ page: "sendCollab" })}
+                title="Collaborate"
+              />
             </span>
           </div>
         </div>

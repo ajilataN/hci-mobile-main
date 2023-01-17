@@ -1,7 +1,26 @@
 import { Component } from "react";
 import UniversalButtonView from "../CustomComponents/UniversalButtonView";
+import axios from "axios";
 
 class SendCollab extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novica: [],
+    };
+  }
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
+  };
+
+  componentDidMount() {
+    axios.get("/novice/" + this.props.data).then((res) => {
+      this.setState({
+        novica: res.data,
+      });
+    });
+  }
   render() {
     return (
       <div
@@ -10,22 +29,30 @@ class SendCollab extends Component {
       >
         <div style={{ width: "100%" }}>
           <div style={{ float: "left" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
+            <button
+              onClick={() => this.QSetViewInParent({ page: "novice" })}
+              className="btn btn-outline-none"
             >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </button>
           </div>
           <div style={{ float: "right" }}>
-            <UniversalButtonView title="Send" />
+            <UniversalButtonView
+              onClick={() => this.QSetViewInParent({ page: "novice" })}
+              title="Send"
+            />
           </div>
         </div>
         <div style={{ textAlign: "center", width: "100%" }}>
@@ -40,49 +67,49 @@ class SendCollab extends Component {
             />
           </div>
         </form>
-        <div class="form-group" style={{ width: "100%" }}>
+        <div className="form-group" style={{ width: "100%" }}>
           <label for="exampleFormControlTextarea1">Product description</label>
           <textarea
-            class="form-control"
+            className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
           ></textarea>
         </div>
-        <div class="form-group" style={{ width: "100%" }}>
+        <div className="form-group" style={{ width: "100%" }}>
           <label for="exampleFormControlTextarea1">Brand identity</label>
           <textarea
-            class="form-control"
+            className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
           ></textarea>
         </div>
-        <div class="form-group" style={{ width: "100%" }}>
+        <div className="form-group" style={{ width: "100%" }}>
           <label for="exampleFormControlTextarea1">Marketing goals</label>
           <textarea
-            class="form-control"
+            className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
           ></textarea>
         </div>
-        <div class="form-group" style={{ width: "100%" }}>
-          <label for="inputEmail3" class="col-sm-2 col-form-label">
+        <div className="form-group" style={{ width: "100%" }}>
+          <label for="inputEmail3" className="col-sm-2 col-form-label">
             Email
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="email"
-              class="form-control"
+              className="form-control"
               id="inputEmail3"
               placeholder="Email"
             />
           </div>
-          <label for="inputPhoneNum" class="col-sm-2 col-form-label">
+          <label for="inputPhoneNum" className="col-sm-2 col-form-label">
             Phone number
           </label>
-          <div class="col-sm-10">
+          <div className="col-sm-10">
             <input
               type="phone"
-              class="form-control"
+              className="form-control"
               id="inputPhoneNum"
               placeholder="+386 **-***-***"
             />

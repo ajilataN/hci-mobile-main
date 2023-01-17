@@ -14,6 +14,10 @@ const Profile = () => {
     const pictureSrc = webcamRef.current.getScreenshot();
     setPicture(pictureSrc);
   });
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
+  };
   return (
     <div>
       <div>

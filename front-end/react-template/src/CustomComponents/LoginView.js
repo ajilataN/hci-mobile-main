@@ -1,27 +1,17 @@
 import { Component } from "react";
 import UniversalButtonView from "../CustomComponents/UniversalButtonView";
+import axios from "axios";
 
 class LoginView extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
-    user: {
-      type: "login";
-    }
+    this.state = {
+      novica: [],
+    };
   }
 
-  QGetTextFromField = (e) => {
-    this.setState((prevState) => ({
-      user: { ...prevState.user, [e.target.name]: e.target.value }
-    }));
-  };
-
-  QSendUserToParent = (state) => {
-    this.props.QUserFromChild(state.user);
-  };
-
-  submit = async () => {
-    const toSubmit = {};
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
   };
 
   render() {
@@ -29,19 +19,24 @@ class LoginView extends Component {
       <div style={{ marginTop: "50px" }}>
         <div style={{ width: "100%" }}>
           <div style={{ float: "left" }}>
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="30"
-              height="30"
-              fill="currentColor"
-              class="bi bi-arrow-left"
-              viewBox="0 0 16 16"
+            <button
+              onClick={() => this.QSetViewInParent({ page: "mentorC" })}
+              className="btn btn-outline-none"
             >
-              <path
-                fill-rule="evenodd"
-                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
-              />
-            </svg>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="30"
+                height="30"
+                fill="currentColor"
+                className="bi bi-arrow-left"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  fill-rule="evenodd"
+                  d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
         <h3 style={{ textAlign: "center" }}>APPLICATION</h3>
@@ -56,15 +51,18 @@ class LoginView extends Component {
           part of our large family!
         </div>
 
-        <div class="card" style={{ marginTop: "50px", textAlign: "center" }}>
-          <div class="card-header">
+        <div
+          className="card"
+          style={{ marginTop: "50px", textAlign: "center" }}
+        >
+          <div className="card-header">
             <h4>
               <b>Attachments:</b>
             </h4>
           </div>
 
-          <div class="card-body">
-            <h5 class="card-title">CV</h5>
+          <div className="card-body">
+            <h5 className="card-title">CV</h5>
             <form>
               <div className="form-group">
                 <input
@@ -74,7 +72,7 @@ class LoginView extends Component {
                 />
               </div>
             </form>
-            <h5 class="card-title" style={{ marginTop: "20px" }}>
+            <h5 className="card-title" style={{ marginTop: "20px" }}>
               Motivational letter
             </h5>
             <form>
@@ -89,8 +87,14 @@ class LoginView extends Component {
           </div>
         </div>
         <div style={{ textAlign: "center", marginTop: "10px" }}>
-          <UniversalButtonView title="Help" />{" "}
-          <UniversalButtonView title="Send" />
+          <UniversalButtonView
+            onClick={() => this.QSetViewInParent({ page: "about" })}
+            title="Help"
+          />{" "}
+          <UniversalButtonView
+            onClick={() => this.QSetViewInParent({ page: "mentorC" })}
+            title="Send"
+          />
         </div>
       </div>
     );

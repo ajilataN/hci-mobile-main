@@ -3,8 +3,32 @@ import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 import collabheart from "./public/CollabHeart.png";
 import women1 from "./public/Women1.png";
 import women2 from "./public/Women2.png";
+import axios from "axios";
 
 class CollabView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novice: [],
+    };
+  }
+
+  QSetViewInParent = (obj) => {
+    this.props.QIDFromChild(obj);
+  };
+
+  componentDidMount() {
+    axios.get("/novice").then((res) => {
+      this.setState({
+        novice: res.data,
+      });
+      /*.catch(err=>{
+          if(err){
+            console.log("Error: "+err.message)
+          }
+        })*/
+    });
+  }
   render() {
     return (
       <div
@@ -65,7 +89,10 @@ class CollabView extends Component {
           </select>
         </div>
         <div style={{ width: "100%", textAlign: "center" }}>
-          <UniversalButtonView title="Select" />
+          <UniversalButtonView
+            onClick={() => this.QSetViewInParent({ page: "novice" })}
+            title="Select"
+          />
         </div>
       </div>
     );

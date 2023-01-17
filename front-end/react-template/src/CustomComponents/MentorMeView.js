@@ -1,8 +1,19 @@
 import { Component } from "react";
 import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 import mentorme from "./public/MentorMe.png";
+import axios from "axios";
 
 class MentorMeView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novice: [],
+    };
+  }
+
+  QSetViewInParent = (obj) => {
+    this.props.QIDFromChild(obj);
+  };
   render() {
     return (
       <div
@@ -23,13 +34,20 @@ class MentorMeView extends Component {
             marginTop: "30px",
           }}
         >
-          <img src={mentorme} alt="collabPicture" style={{ width: "100%" }} />
+          <img
+            src={mentorme}
+            alt="collabPicture"
+            style={{ width: "100%", maxWidth: "400px" }}
+          />
         </div>
-        <div style={{ textAlign: "center", width: "100%", marginTop: "150px" }}>
+        <div style={{ textAlign: "center", width: "100%", marginTop: "50px" }}>
           <h1 className="text-center">#MentorMe</h1>
         </div>
         <div style={{ width: "100%", textAlign: "center", marginTop: "100px" }}>
-          <UniversalButtonView title="Get Started" />
+          <UniversalButtonView
+            onClick={() => this.QSetViewInParent({ page: "form" })}
+            title="Get Started"
+          />
         </div>
       </div>
     );

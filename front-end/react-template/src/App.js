@@ -11,20 +11,24 @@ import SendCollab from "./CustomComponents/SendCollab";
 import MentorMeView from "./CustomComponents/MentorMeView";
 import FormView from "./CustomComponents/FormView";
 import RatingsView from "./CustomComponents/RatingsView";
+import Feed from "./CustomComponents/feed";
+import MentorCompanies from "./CustomComponents/MentorCompanies";
+import AboutMentoring from "./CustomComponents/AboutMentoring";
+import Camera from "./CustomComponents/camera";
 
 class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
       currentPage: "none",
-      novicaId: 0
+      novicaId: 0,
     };
   }
 
   QSetView = (obj) => {
     this.setState({
       currentPage: obj.page,
-      novicaId: obj.id || 0
+      novicaId: obj.id || 0,
     });
   };
 
@@ -32,40 +36,81 @@ class App extends Component {
     let page = state.currentPage;
     switch (page) {
       case "about":
-        return <AboutView />;
+        return (
+          <AboutView
+            QViewFromChild={this.QSetView}
+            QIDFromChild={this.QSetView}
+          />
+        );
+
+      case "feed":
+        return (
+          <Feed QViewFromChild={this.QSetView} QIDFromChild={this.QSetView} />
+        );
 
       case "collab":
-        return <CollabView />;
+        return <CollabView QIDFromChild={this.QSetView} />;
 
-      case "menor":
-        return <MentorMeView />;
+      case "mentor":
+        return <MentorMeView QIDFromChild={this.QSetView} />;
 
       case "form":
-        return <FormView />;
+        return (
+          <FormView
+            QIDFromChild={this.QSetView}
+            QViewFromChild={this.QSetView}
+          />
+        );
 
       case "sendCollab":
-        return <SendCollab />;
+        return <SendCollab QViewFromChild={this.QSetView} />;
 
       case "raitings":
-        return <RatingsView />;
+        return (
+          <RatingsView
+            QIDFromChild={this.QSetView}
+            QViewFromChild={this.QSetView}
+          />
+        );
 
-      case "news":
-        return <NoviceView QIDFromChild={this.QSetView} />;
+      case "novice":
+        return (
+          <NoviceView
+            QIDFromChild={this.QSetView}
+            QViewFromChild={this.QSetView}
+          />
+        );
 
       case "addNews":
         return <AddNovicaView />;
 
       case "signup":
-        return <SignupView QUserFromChild={this.QHandleUserLog} />;
+        return <SignupView />;
+
+      case "mentorC":
+        return <MentorCompanies QIDFromChild={this.QSetView} />;
 
       case "login":
-        return <LoginView QUserFromChild={this.QHandleUserLog} />;
+        return (
+          <LoginView
+            QIDFromChild={this.QSetView}
+            QViewFromChild={this.QSetView}
+          />
+        );
 
       case "novica":
         return <SingleNovicaView QViewFromChild={this.QSetView} />;
 
+      case "aboutMentoring":
+        return <AboutMentoring QViewFromChild={this.QSetView} />;
+
+      case "camera":
+        return (
+          <Camera QViewFromChild={this.QSetView} QIDFromChild={this.QSetView} />
+        );
+
       default:
-        return <HomeView />;
+        return <HomeView QIDFromChild={this.QSetView} />;
     }
   };
 
@@ -88,7 +133,7 @@ class App extends Component {
               left: "0",
               position: "fixed",
               top: "0",
-              zIndex: "1"
+              zIndex: "1",
             }}
           >
             <div className="container-fluid">
@@ -118,11 +163,11 @@ class App extends Component {
                 <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                   <li className="nav-item">
                     <a
-                      onClick={() => this.QSetView({ page: "about" })}
+                      onClick={() => this.QSetView({ page: "feed" })}
                       className="nav-link "
                       href="#"
                     >
-                      About
+                      Feed
                     </a>
                   </li>
                   <li className="nav-item">
@@ -137,51 +182,11 @@ class App extends Component {
 
                   <li className="nav-item">
                     <a
-                      onClick={() => this.QSetView({ page: "menor" })}
+                      onClick={() => this.QSetView({ page: "mentor" })}
                       className="nav-link "
                       href="#"
                     >
                       Mentoring
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "form" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      Form
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "sendCollab" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      SendCollab
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "raitings" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      Raitings
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "news" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      News
                     </a>
                   </li>
 
@@ -192,35 +197,6 @@ class App extends Component {
                       href="#"
                     >
                       Add news
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "signup" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      Sign up
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "login" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      Login
-                    </a>
-                  </li>
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "novica" })}
-                      className="nav-link "
-                      href="#"
-                    >
-                      Single Novica
                     </a>
                   </li>
                 </ul>

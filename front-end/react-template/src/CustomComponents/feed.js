@@ -5,17 +5,49 @@ import profile3 from "./public/profile3.jpg";
 import coffee from "./public/coffee.jpg";
 import nails from "./public/nails.png";
 import makeup from "./public/makeup.jpg";
+import axios from "axios";
 
 class FeedView extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      novica: [],
+    };
+  }
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
+  };
   render() {
     return (
       <div style={{ height: "100%", marginTop: "50px" }}>
-        <div className="card">
+        <div style={{ float: "left", display: "block" }}>
+          <button
+            onClick={() => this.QSetViewInParent({ page: "home" })}
+            className="btn btn-outline-none"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="30"
+              height="30"
+              fill="currentColor"
+              className="bi bi-arrow-left"
+              viewBox="0 0 16 16"
+            >
+              <path
+                fillRule="evenodd"
+                d="M15 8a.5.5 0 0 0-.5-.5H2.707l3.147-3.146a.5.5 0 1 0-.708-.708l-4 4a.5.5 0 0 0 0 .708l4 4a.5.5 0 0 0 .708-.708L2.707 8.5H14.5A.5.5 0 0 0 15 8z"
+              />
+            </svg>
+          </button>
+        </div>
+        <div className="card" style={{ width: "100%" }}>
           <div className="card-header" style={{ textAlign: "center" }}>
             <img
               src={profile1}
               className="float-start rounded-circle w-25 img-responsive"
               alt=""
+              style={{ maxWidth: "150px" }}
             ></img>
             <div>
               <span style={{ fontSize: "1.5rem" }}>
@@ -39,6 +71,7 @@ class FeedView extends Component {
               src={profile2}
               className="float-start rounded-circle w-25 img-responsive"
               alt=""
+              style={{ maxWidth: "150px" }}
             ></img>
             <div>
               <span style={{ fontSize: "1.5rem" }}>
@@ -62,6 +95,7 @@ class FeedView extends Component {
               src={profile3}
               className="float-start rounded-circle w-25 img-responsive"
               alt=""
+              style={{ maxWidth: "150px" }}
             ></img>
             <div>
               <span style={{ fontSize: "1.5rem" }}>
@@ -78,10 +112,16 @@ class FeedView extends Component {
             </p>
           </div>
         </div>
-        <button className="float-start sticky-bottom rounded-circle btn btn-secondary">
+        <button
+          onClick={() => this.QSetViewInParent({ page: "raitings" })}
+          className="float-start sticky-bottom rounded-circle btn btn-secondary"
+        >
           &#9733;
         </button>
-        <button className="float-end sticky-bottom rounded-circle btn btn-secondary">
+        <button
+          onClick={() => this.QSetViewInParent({ page: "camera" })}
+          className="float-end sticky-bottom rounded-circle btn btn-secondary"
+        >
           <span>&#128247;</span>
         </button>
       </div>
