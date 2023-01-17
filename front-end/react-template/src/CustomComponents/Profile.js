@@ -4,7 +4,7 @@ import Webcam from "react-webcam";
 const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
   width: 400,
-  height: 400,
+  height: 800,
   facingMode: "user",
 };
 const Profile = () => {
@@ -15,9 +15,6 @@ const Profile = () => {
     setPicture(pictureSrc);
   });
 
-  QSetViewInParent = (obj) => {
-    this.props.QViewFromChild(obj);
-  };
   return (
     <div>
       <div>
@@ -26,12 +23,13 @@ const Profile = () => {
             audio={false}
             height={800}
             ref={webcamRef}
-            width={360}
+            width={400}
             screenshotFormat="image/jpeg"
             videoConstraints={videoConstraints}
+            className="rounded mx-auto d-block"
           />
         ) : (
-          <img src={picture} className="w-50 p-3" />
+          <img src={picture} style={{ MaxWidth: "300px", height: "300px" }} />
         )}
       </div>
       <div>
@@ -76,15 +74,17 @@ const Profile = () => {
             <button className="btn btn-primary">Post</button>
           </div>
         ) : (
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              capture();
-            }}
-            className="btn btn-danger"
-          >
-            Capture
-          </button>
+          <div style={{ textAlign: "center" }}>
+            <button
+              onClick={(e) => {
+                e.preventDefault();
+                capture();
+              }}
+              className="rounded-circle btn btn-secondary"
+            >
+              <span>&#128247;</span>
+            </button>
+          </div>
         )}
       </div>
     </div>

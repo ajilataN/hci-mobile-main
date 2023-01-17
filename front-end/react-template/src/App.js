@@ -15,6 +15,7 @@ import Feed from "./CustomComponents/feed";
 import MentorCompanies from "./CustomComponents/MentorCompanies";
 import AboutMentoring from "./CustomComponents/AboutMentoring";
 import Camera from "./CustomComponents/camera";
+import Profile from "./CustomComponents/Profile";
 
 class App extends Component {
   constructor(props) {
@@ -105,9 +106,7 @@ class App extends Component {
         return <AboutMentoring QViewFromChild={this.QSetView} />;
 
       case "camera":
-        return (
-          <Camera QViewFromChild={this.QSetView} QIDFromChild={this.QSetView} />
-        );
+        return <Camera />;
 
       default:
         return <HomeView QIDFromChild={this.QSetView} />;
@@ -204,7 +203,6 @@ class App extends Component {
             </div>
           </nav>
         </div>
-
         <div id="viewer">{this.QGetView(this.state)}</div>
       </div>
     );
