@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 import Webcam from "react-webcam";
 
 const WebcamComponent = () => <Webcam />;
@@ -71,7 +72,7 @@ const Profile = () => {
                 placeholder="#hashtag"
               />
             </div>
-            <button className="btn btn-primary">Post</button>
+            <UniversalButtonView title={"Post"} />
           </div>
         ) : (
           <div style={{ textAlign: "center" }}>
