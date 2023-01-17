@@ -6,19 +6,35 @@ import coffee from "./public/coffee.jpg";
 import nails from "./public/nails.png";
 import makeup from "./public/makeup.jpg";
 import axios from "axios";
+import React from "react";
 
 class FeedView extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      novica: [],
+      novice: [],
     };
   }
 
   QSetViewInParent = (obj) => {
     this.props.QViewFromChild(obj);
   };
+
+  componentDidMount() {
+    axios
+      .get("http://192.168.56.1:5999/novice")
+      .then((res) => {
+        console.log(res.data);
+        this.setState({
+          novice: res.data,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   render() {
+    let post = this.state.novice;
     return (
       <div style={{ height: "100%", marginTop: "50px" }}>
         <div style={{ float: "left", display: "block" }}>
@@ -41,6 +57,40 @@ class FeedView extends Component {
             </svg>
           </button>
         </div>
+        {post.length > 0 ? (
+          post.map((novica) => {
+            return (
+              <div className="card" style={{ width: "100%" }} key={novica._id}>
+                <div className="card-header" style={{ textAlign: "center" }}>
+                  <img
+                    src={profile1}
+                    className="float-start rounded-circle w-25 img-responsive"
+                    alt=""
+                    style={{ maxWidth: "150px" }}
+                  ></img>
+                  <div>
+                    <span style={{ fontSize: "1.5rem" }}>
+                      <strong>&#8982; Natalija and {novica.tag} </strong>
+                      <div>at {novica.location}</div>
+                    </span>
+                  </div>
+                </div>
+                <div className="card-body" style={{ textAlign: "center" }}>
+                  <img
+                    src={coffee}
+                    className="img-fluid img-responsive"
+                    alt=""
+                  ></img>
+                  <p className="card-text">
+                    <strong>Natalija: </strong> {novica.text} #{novica.hashtag}
+                  </p>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div style={{ height: "100%", marginTop: "50px" }}>Loading...</div>
+        )}
         <div className="card" style={{ width: "100%" }}>
           <div className="card-header" style={{ textAlign: "center" }}>
             <img

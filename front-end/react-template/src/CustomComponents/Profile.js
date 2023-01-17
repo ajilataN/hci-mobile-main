@@ -1,12 +1,13 @@
 import React, { useState } from "react";
-import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 import Webcam from "react-webcam";
+import AddPost from "../CustomComponents/AddPost";
 
 const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
   width: 400,
   height: 800,
   facingMode: "user",
+  // facingMode: { exact: "environment" } for using the rear camera
 };
 const Profile = () => {
   const [picture, setPicture] = useState("");
@@ -35,45 +36,7 @@ const Profile = () => {
       </div>
       <div>
         {picture != "" ? (
-          <div className="container">
-            <div className="mb-3" style={{ margin: "10px" }}>
-              <textarea
-                onChange={(e) => this.QGetTextFromField(e)}
-                name="text"
-                className="form-control"
-                rows="3"
-                placeholder="Add caption about your post..."
-              ></textarea>
-            </div>
-            <div className="mb-3" style={{ margin: "10px" }}>
-              <input
-                onChange={(e) => this.QGetTextFromField(e)}
-                name="tag"
-                type="text"
-                className="form-control"
-                placeholder="@Tag people"
-              />
-            </div>
-            <div className="mb-3" style={{ margin: "10px" }}>
-              <input
-                onChange={(e) => this.QGetTextFromField(e)}
-                name="location"
-                type="text"
-                className="form-control"
-                placeholder="Add location"
-              />
-            </div>
-            <div className="mb-3" style={{ margin: "10px" }}>
-              <input
-                onChange={(e) => this.QGetTextFromField(e)}
-                name="hashtag"
-                type="text"
-                class="form-control"
-                placeholder="#hashtag"
-              />
-            </div>
-            <UniversalButtonView title={"Post"} />
-          </div>
+          <AddPost />
         ) : (
           <div style={{ textAlign: "center" }}>
             <button
@@ -91,4 +54,5 @@ const Profile = () => {
     </div>
   );
 };
+
 export default Profile;
