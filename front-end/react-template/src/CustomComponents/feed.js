@@ -5,9 +5,9 @@ import profile3 from "./public/profile3.jpg";
 import coffee from "./public/coffee.jpg";
 import nails from "./public/nails.png";
 import makeup from "./public/makeup.jpg";
+import shop from "./public/shop.jpg";
 import axios from "axios";
 import React from "react";
-import Profile from "./Profile";
 
 class FeedView extends Component {
   constructor(props) {
@@ -34,6 +34,7 @@ class FeedView extends Component {
         console.log(err);
       });
   }
+
   render() {
     let post = this.state.novice;
     return (
@@ -78,7 +79,7 @@ class FeedView extends Component {
                 </div>
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <img
-                    src={coffee}
+                    src={shop}
                     className="img-fluid img-responsive"
                     alt=""
                   ></img>
@@ -171,7 +172,7 @@ class FeedView extends Component {
           &#9733;
         </button>
         <button
-          onClick={() => this.QSetViewInParent({ page: "camera" })}
+          onClick={() => this.QSetViewInParent({ page: "Profile" })}
           className="float-end sticky-bottom rounded-circle btn btn-secondary"
         >
           <span>&#128247;</span>

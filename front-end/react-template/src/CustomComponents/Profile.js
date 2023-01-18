@@ -1,21 +1,22 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Webcam from "react-webcam";
 import AddPost from "../CustomComponents/AddPost";
 
-const WebcamComponent = () => <Webcam />;
 const videoConstraints = {
   width: 400,
   height: 800,
   facingMode: "user",
   // facingMode: { exact: "environment" } for using the rear camera
 };
-const Profile = () => {
+
+const Profile = (props) => {
   const [picture, setPicture] = useState("");
   const webcamRef = React.useRef(null);
   const capture = React.useCallback(() => {
     const pictureSrc = webcamRef.current.getScreenshot();
     setPicture(pictureSrc);
   });
+  //console.log(picture);
 
   return (
     <div>

@@ -28,6 +28,7 @@ class AddPost extends Component {
         tag: this.state.novica.tag,
         location: this.state.novica.location,
         hashtag: this.state.novica.hashtag,
+        pic: this.state.novica.pic,
       })
       .then((res) => {
         if (res.status != 500) {

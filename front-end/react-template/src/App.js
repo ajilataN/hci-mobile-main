@@ -14,7 +14,6 @@ import RatingsView from "./CustomComponents/RatingsView";
 import Feed from "./CustomComponents/feed";
 import MentorCompanies from "./CustomComponents/MentorCompanies";
 import AboutMentoring from "./CustomComponents/AboutMentoring";
-import Camera from "./CustomComponents/camera";
 import Profile from "./CustomComponents/Profile";
 import AddPost from "./CustomComponents/AddPost";
 
@@ -106,8 +105,8 @@ class App extends Component {
       case "aboutMentoring":
         return <AboutMentoring QViewFromChild={this.QSetView} />;
 
-      case "camera":
-        return <Camera />;
+      case "Profile":
+        return <Profile />;
 
       case "AddPost":
         return <AddPost QViewFromChild={this.QSetView} />;
@@ -190,16 +189,6 @@ class App extends Component {
                       href="#"
                     >
                       Mentoring
-                    </a>
-                  </li>
-
-                  <li className="nav-item">
-                    <a
-                      onClick={() => this.QSetView({ page: "addNews" })}
-                      className="nav-link"
-                      href="#"
-                    >
-                      Add news
                     </a>
                   </li>
                 </ul>

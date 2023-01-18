@@ -26,12 +26,18 @@ novice.get("/:id", async (req, res, next) => {
 
 //Inserts one new to the database
 novice.post("/", async (req, res, next) => {
-  let { text, tag, location, hashtag } = req.body;
+  let { text, tag, location, hashtag, pic } = req.body;
   console.log(req.body);
   var isAcompleteNovica = text && tag && location && hashtag;
   if (isAcompleteNovica) {
     try {
-      let queryResult = await Novica.create({ text, tag, location, hashtag });
+      let queryResult = await Novica.create({
+        text,
+        tag,
+        location,
+        hashtag,
+        pic,
+      });
       res.json(queryResult);
     } catch (err) {
       console.log(err);

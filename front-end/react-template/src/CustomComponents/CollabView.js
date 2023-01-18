@@ -17,18 +17,6 @@ class CollabView extends Component {
     this.props.QIDFromChild(obj);
   };
 
-  componentDidMount() {
-    axios.get("/novice").then((res) => {
-      this.setState({
-        novice: res.data,
-      });
-      /*.catch(err=>{
-          if(err){
-            console.log("Error: "+err.message)
-          }
-        })*/
-    });
-  }
   render() {
     return (
       <div
