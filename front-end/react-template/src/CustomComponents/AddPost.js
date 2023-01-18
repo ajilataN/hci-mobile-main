@@ -1,6 +1,7 @@
 import { Component } from "react";
 import UniversalButtonView from "../CustomComponents/UniversalButtonView";
 import axios from "axios";
+import Feed from "./feed";
 
 class AddPost extends Component {
   constructor(props) {
@@ -14,6 +15,10 @@ class AddPost extends Component {
     this.setState((prevState) => ({
       novica: { ...prevState.novica, [e.target.name]: e.target.value },
     }));
+  };
+
+  QSetViewInParent = (obj) => {
+    this.props.QViewFromChild(obj);
   };
 
   QPostNovica = () => {
@@ -76,10 +81,16 @@ class AddPost extends Component {
             placeholder="#hashtag"
           />
         </div>
-        <UniversalButtonView
+        <button
           onClick={() => this.QPostNovica()}
-          title={"Post"}
-        />
+          style={{ color: "white", padding: "10px", fontFamily: "Arial" }}
+          className=" btn bg-danger-subtle border-dark-subtle
+       border border-2 "
+        >
+          <a href="./feed.js">
+            <b> Post</b>
+          </a>
+        </button>
       </div>
     );
   }

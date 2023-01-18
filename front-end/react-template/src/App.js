@@ -16,6 +16,7 @@ import MentorCompanies from "./CustomComponents/MentorCompanies";
 import AboutMentoring from "./CustomComponents/AboutMentoring";
 import Camera from "./CustomComponents/camera";
 import Profile from "./CustomComponents/Profile";
+import AddPost from "./CustomComponents/AddPost";
 
 class App extends Component {
   constructor(props) {
@@ -107,6 +108,9 @@ class App extends Component {
 
       case "camera":
         return <Camera />;
+
+      case "AddPost":
+        return <AddPost QViewFromChild={this.QSetView} />;
 
       default:
         return <HomeView QIDFromChild={this.QSetView} />;

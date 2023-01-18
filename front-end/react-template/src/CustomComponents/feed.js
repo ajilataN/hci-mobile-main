@@ -7,6 +7,7 @@ import nails from "./public/nails.png";
 import makeup from "./public/makeup.jpg";
 import axios from "axios";
 import React from "react";
+import Profile from "./Profile";
 
 class FeedView extends Component {
   constructor(props) {
@@ -63,7 +64,7 @@ class FeedView extends Component {
               <div className="card" style={{ width: "100%" }} key={novica._id}>
                 <div className="card-header" style={{ textAlign: "center" }}>
                   <img
-                    src={profile1}
+                    src={profile2}
                     className="float-start rounded-circle w-25 img-responsive"
                     alt=""
                     style={{ maxWidth: "150px" }}
@@ -81,6 +82,7 @@ class FeedView extends Component {
                     className="img-fluid img-responsive"
                     alt=""
                   ></img>
+
                   <p className="card-text">
                     <strong>Natalija: </strong> {novica.text} #{novica.hashtag}
                   </p>

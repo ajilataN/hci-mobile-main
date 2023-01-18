@@ -42,13 +42,25 @@ class AboutView extends Component {
         </div>
         <h3 style={{ marginTop: "20px" }}>How to write a propper CV?</h3>
         <div style={{ textAlign: "center" }}>
-          <UniversalButtonView title=<span>&#128279;</span> />
+          <UniversalButtonView
+            title=<a href={"https://zety.com/blog/how-to-write-a-cv "}>
+              <span>&#128279;</span>
+            </a>
+          />
         </div>
         <h3 style={{ marginTop: "20px" }}>
           How to write a propper Motivational letter?
         </h3>
         <div style={{ textAlign: "center" }}>
-          <UniversalButtonView title=<span>&#128279;</span> />
+          <UniversalButtonView
+            title=<a
+              href={
+                "https://novoresume.com/career-blog/how-to-write-a-motivation-letter"
+              }
+            >
+              <span>&#128279;</span>
+            </a>
+          />
         </div>
         <div style={{ marginTop: "20px", textAlign: "center" }}>
           <b>CV and Motivation letter you can attach only in pdf format:</b>
